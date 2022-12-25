@@ -12,11 +12,13 @@ namespace Dcat\Admin {
 
     /**
      * @property Grid\Column|Collection id
+     * @property Grid\Column|Collection content
+     * @property Grid\Column|Collection created_at
      * @property Grid\Column|Collection name
+     * @property Grid\Column|Collection email
      * @property Grid\Column|Collection type
      * @property Grid\Column|Collection version
      * @property Grid\Column|Collection detail
-     * @property Grid\Column|Collection created_at
      * @property Grid\Column|Collection updated_at
      * @property Grid\Column|Collection is_enabled
      * @property Grid\Column|Collection parent_id
@@ -47,22 +49,34 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection rate
      * @property Grid\Column|Collection released
      * @property Grid\Column|Collection release_at
-     * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection tokenable_type
      * @property Grid\Column|Collection tokenable_id
      * @property Grid\Column|Collection abilities
      * @property Grid\Column|Collection last_used_at
      * @property Grid\Column|Collection expires_at
-     * @property Grid\Column|Collection content
      * @property Grid\Column|Collection email_verified_at
+     * @property Grid\Column|Collection customer_transaction_id
+     * @property Grid\Column|Collection customer_id
+     * @property Grid\Column|Collection order_id
+     * @property Grid\Column|Collection amount
+     * @property Grid\Column|Collection integral
+     * @property Grid\Column|Collection mileage
+     * @property Grid\Column|Collection remarks
+     * @property Grid\Column|Collection date_added
+     * @property Grid\Column|Collection total
+     * @property Grid\Column|Collection amount_changed
+     * @property Grid\Column|Collection operated_total
+     * @property Grid\Column|Collection admin_id
      *
      * @method Grid\Column|Collection id(string $label = null)
+     * @method Grid\Column|Collection content(string $label = null)
+     * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection name(string $label = null)
+     * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection type(string $label = null)
      * @method Grid\Column|Collection version(string $label = null)
      * @method Grid\Column|Collection detail(string $label = null)
-     * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection updated_at(string $label = null)
      * @method Grid\Column|Collection is_enabled(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
@@ -93,15 +107,25 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection rate(string $label = null)
      * @method Grid\Column|Collection released(string $label = null)
      * @method Grid\Column|Collection release_at(string $label = null)
-     * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection tokenable_type(string $label = null)
      * @method Grid\Column|Collection tokenable_id(string $label = null)
      * @method Grid\Column|Collection abilities(string $label = null)
      * @method Grid\Column|Collection last_used_at(string $label = null)
      * @method Grid\Column|Collection expires_at(string $label = null)
-     * @method Grid\Column|Collection content(string $label = null)
      * @method Grid\Column|Collection email_verified_at(string $label = null)
+     * @method Grid\Column|Collection customer_transaction_id(string $label = null)
+     * @method Grid\Column|Collection customer_id(string $label = null)
+     * @method Grid\Column|Collection order_id(string $label = null)
+     * @method Grid\Column|Collection amount(string $label = null)
+     * @method Grid\Column|Collection integral(string $label = null)
+     * @method Grid\Column|Collection mileage(string $label = null)
+     * @method Grid\Column|Collection remarks(string $label = null)
+     * @method Grid\Column|Collection date_added(string $label = null)
+     * @method Grid\Column|Collection total(string $label = null)
+     * @method Grid\Column|Collection amount_changed(string $label = null)
+     * @method Grid\Column|Collection operated_total(string $label = null)
+     * @method Grid\Column|Collection admin_id(string $label = null)
      */
     class Grid {}
 
@@ -109,11 +133,13 @@ namespace Dcat\Admin {
 
     /**
      * @property Show\Field|Collection id
+     * @property Show\Field|Collection content
+     * @property Show\Field|Collection created_at
      * @property Show\Field|Collection name
+     * @property Show\Field|Collection email
      * @property Show\Field|Collection type
      * @property Show\Field|Collection version
      * @property Show\Field|Collection detail
-     * @property Show\Field|Collection created_at
      * @property Show\Field|Collection updated_at
      * @property Show\Field|Collection is_enabled
      * @property Show\Field|Collection parent_id
@@ -144,22 +170,34 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection rate
      * @property Show\Field|Collection released
      * @property Show\Field|Collection release_at
-     * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection tokenable_type
      * @property Show\Field|Collection tokenable_id
      * @property Show\Field|Collection abilities
      * @property Show\Field|Collection last_used_at
      * @property Show\Field|Collection expires_at
-     * @property Show\Field|Collection content
      * @property Show\Field|Collection email_verified_at
+     * @property Show\Field|Collection customer_transaction_id
+     * @property Show\Field|Collection customer_id
+     * @property Show\Field|Collection order_id
+     * @property Show\Field|Collection amount
+     * @property Show\Field|Collection integral
+     * @property Show\Field|Collection mileage
+     * @property Show\Field|Collection remarks
+     * @property Show\Field|Collection date_added
+     * @property Show\Field|Collection total
+     * @property Show\Field|Collection amount_changed
+     * @property Show\Field|Collection operated_total
+     * @property Show\Field|Collection admin_id
      *
      * @method Show\Field|Collection id(string $label = null)
+     * @method Show\Field|Collection content(string $label = null)
+     * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection name(string $label = null)
+     * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection type(string $label = null)
      * @method Show\Field|Collection version(string $label = null)
      * @method Show\Field|Collection detail(string $label = null)
-     * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection updated_at(string $label = null)
      * @method Show\Field|Collection is_enabled(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
@@ -190,15 +228,25 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection rate(string $label = null)
      * @method Show\Field|Collection released(string $label = null)
      * @method Show\Field|Collection release_at(string $label = null)
-     * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection tokenable_type(string $label = null)
      * @method Show\Field|Collection tokenable_id(string $label = null)
      * @method Show\Field|Collection abilities(string $label = null)
      * @method Show\Field|Collection last_used_at(string $label = null)
      * @method Show\Field|Collection expires_at(string $label = null)
-     * @method Show\Field|Collection content(string $label = null)
      * @method Show\Field|Collection email_verified_at(string $label = null)
+     * @method Show\Field|Collection customer_transaction_id(string $label = null)
+     * @method Show\Field|Collection customer_id(string $label = null)
+     * @method Show\Field|Collection order_id(string $label = null)
+     * @method Show\Field|Collection amount(string $label = null)
+     * @method Show\Field|Collection integral(string $label = null)
+     * @method Show\Field|Collection mileage(string $label = null)
+     * @method Show\Field|Collection remarks(string $label = null)
+     * @method Show\Field|Collection date_added(string $label = null)
+     * @method Show\Field|Collection total(string $label = null)
+     * @method Show\Field|Collection amount_changed(string $label = null)
+     * @method Show\Field|Collection operated_total(string $label = null)
+     * @method Show\Field|Collection admin_id(string $label = null)
      */
     class Show {}
 

@@ -20,5 +20,7 @@ Route::group([
 
     $router->resource('posts', 'PostController');
 
+    $router->resource('point', 'PointController');
+
 });
 

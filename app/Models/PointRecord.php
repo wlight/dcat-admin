@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Dcat\Admin\Traits\HasDateTimeFormatter;
+
 use Illuminate\Database\Eloquent\Model;
 
 class PointRecord extends Model
 {
-    use HasFactory;
+	use HasDateTimeFormatter;
     protected $table = 'wa_point_record';
-    protected $guarded = [];
-    public $timestamps = false;
     
 }

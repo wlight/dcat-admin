@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Dcat\Admin\Traits\HasDateTimeFormatter;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Point extends Model
 {
-    use HasFactory;
+	use HasDateTimeFormatter;
     protected $table = 'wa_point';
-    protected $guarded = [];
-    public $timestamps = false;
+
+    public function recored()
+    {
+        return $this->hasMany(Point::class, 'customer_id', 'customer_id');
+    }
 
 }
