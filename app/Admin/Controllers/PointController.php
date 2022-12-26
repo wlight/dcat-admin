@@ -9,6 +9,8 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Dcat\Admin\Widgets\Tab;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -19,28 +21,30 @@ class PointController extends AdminController
      *
      * @return Grid
      */
-    protected function grid()
+    protected function grid($id = 0)
     {
-        return Grid::make(new Point(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('customer_id');
-            $grid->column('total');
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+        $grid = Grid::make(new Point());
+        $grid->column('id')->sortable();
+        $grid->column('customer_id');
+        $grid->column('total');
+        $grid->column('created_at');
+        $grid->column('updated_at')->sortable();
 
-            // 设置样式
-            $grid->setActionClass(Grid\Displayers\Actions::class);
+        // 设置样式
+        $grid->setActionClass(Grid\Displayers\Actions::class);
 
-            $grid->disableCreateButton();
-            $grid->disableRowSelector();
-            $grid->disableEditButton();
-            $grid->disableDeleteButton();
+        $grid->disableCreateButton();
+        $grid->disableRowSelector();
+        $grid->disableEditButton();
+        $grid->disableDeleteButton();
 
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+        $grid->filter(function (Grid\Filter $filter) {
+            $filter->equal('id');
 
-            });
         });
+
+
+        return $grid;
     }
 
     /**
@@ -52,40 +56,40 @@ class PointController extends AdminController
      */
     protected function detail($id)
     {
-        return Grid::make(new PointRecord(), function (Grid $grid) use ($id) {
-            $point = PointModel::find($id);
-            if(!$point) {
-                return;
+        $grid = Grid::make(new PointRecord());
+        $point = PointModel::find($id);
+        if (!$point) {
+            return;
+        }
+        $customer_id = $point->customer_id;
+
+        $grid->model()->where('customer_id', $customer_id);
+        $grid->column('id')->sortable();
+        $grid->column('description');
+        $grid->column('amount_changed')->display(function ($amountChanged) {
+            if ($amountChanged < 0) {
+                return "<span style='color:red'>$amountChanged</span>";
+            } else {
+                return "<span style='color:green'>$amountChanged</span>";
             }
-            $customer_id = $point->customer_id;
+        });
+        $grid->column('operated_total');
+        $grid->column('order_id');
+        $grid->column('created_at');
+        $grid->column('updated_at')->sortable();
 
-            $grid->model()->where('customer_id', $customer_id);
-            $grid->column('id')->sortable();
-            $grid->column('description');
-            $grid->column('amount_changed')->display(function($amountChanged) {
-                if ($amountChanged < 0) {
-                    return "<span style='color:red'>$amountChanged</span>";
-                } else {
-                    return "<span style='color:green'>$amountChanged</span>";
-                }
-            });
-            $grid->column('operated_total');
-            $grid->column('order_id');
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+        // 设置样式
+        $grid->disableCreateButton();
+        $grid->disableRowSelector();
+        $grid->disableEditButton();
+        $grid->disableDeleteButton();
+        $grid->disableActions();
+        $grid->filter(function (Grid\Filter $filter) {
+            $filter->equal('id');
+        });
 
-            // 设置样式
-            $grid->disableCreateButton();
-            $grid->disableRowSelector();
-            $grid->disableEditButton();
-            $grid->disableDeleteButton();
-            $grid->disableActions();
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-            });
-
-            // 设置脚部
-            $grid->footer(function($collection) use ($point) {
+        // 设置脚部
+        $grid->footer(function ($collection) use ($point) {
 
 
 //               $query = Model::query();
@@ -102,10 +106,9 @@ class PointController extends AdminController
 //                // 查出统计数据
 //                $data = $grid->model()->getQueries()->query->get();
 
-                return "<div style='padding: 10px;'>总收入 ： ".$point->total."</div>";
-            });
+            return "<div style='padding: 10px;'>总收入 ： " . $point->total . "</div>";
         });
-
+        return $grid;
 
 
 //        return Show::make($id, new Point(), function (Show $show) {?

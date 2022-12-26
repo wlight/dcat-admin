@@ -22,5 +22,7 @@ Route::group([
 
     $router->resource('point', 'PointController');
 
+    $router->resource('transaction', 'CustomerTransactionController');
+
 });
 

@@ -2,12 +2,14 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Renderable\PointRecordTable;
 use App\Admin\Repositories\Post;
 use App\Admin\Repositories\User;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+
 
 class UserController extends AdminController
 {
@@ -25,10 +27,22 @@ class UserController extends AdminController
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
 
+            // 添加一个按钮
+            $grid->column('point')
+                ->display('point')
+                ->modal(function () {
+                    return PointRecordTable::make()->payload(['customerId'=>$this->id]);
+                });
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
 
             });
+
+
+
+            //
+
         });
     }
 
@@ -72,6 +86,7 @@ class UserController extends AdminController
             $form->display('id');
             $form->text('name');
             $form->text('email');
+            $form->text('password');
 
             $form->display('created_at');
             $form->display('updated_at');
